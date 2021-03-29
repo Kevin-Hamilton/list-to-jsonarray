@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <b>Paste your list here</b>
+  <texteara id="txt-in"></textarea>
+  <hr>
+  <button id="convert">Convert</button>
+  <hr>
+  <b>Get your JSON here</b>
+  <texteara id="json-out"></textarea>
+<script>
+var btn = document.getElementById('convert');
+var txt = document.getElementById('txt-in');
+var json = document.getElementById('json-out');
+btn.addEventListener('click',function(){
+  var in = txt.value;
+  json.value = in;
+</script>
+</body>
+</html>
