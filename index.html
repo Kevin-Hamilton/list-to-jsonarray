@@ -7,13 +7,14 @@
   <title>Document</title>
   <style>
     textarea {
+      display: block;
       width: 100%;
       max-width: 800px;
       height: 500px;
     }
     b {
       font-size: 18px;
-      display: block;
+      display: inline-block;
     }
     button#convert {
       background-color: darkgreen;
@@ -23,11 +24,16 @@
     }
     #to-clip, #copied {
       display: none;
+      margin-left:2em;
+    }
+    #to-clip {
+      color: white;
+      background: rgb(27, 129, 239);
     }
   </style>
 </head>
 <body>
-  <b>Paste your list here</b>
+  <b>Paste your list here. (One record per line)</b>
   <textarea id="txt-in"></textarea>
   <hr>
   <button id="convert">Convert</button>
@@ -40,8 +46,8 @@ var txt = document.getElementById('txt-in');
 var json = document.getElementById('json-out');
 var clip = document.getElementById('to-clip');
 var copied = document.getElementById('copied');
-btn.addEventListener('click',function(){ var foo = txt.value; var lines = foo.split('\n'); json.value=JSON.stringify(lines); clip.style.display='inline-block'; });
-clip.addEventListener('click',function(){ json.focus(); json.select(); document.execCommand("copy"); clip.style.display='none'; copied.style.display='inline-block'; });
+btn.addEventListener('click',function(){ var foo = txt.value; foo=foo.replace(/,$/gm,'').replace(/^\n/gm,'').trim(); var lines = foo.split('\n'); var str=JSON.stringify(lines); json.value=str.replace(/(.{40}.*?),/g,'$1,\n'); clip.style.display='inline-block'; });
+clip.addEventListener('click',function(){ json.focus(); json.select(); document.execCommand("copy"); clip.style.display='none'; copied.style.display='inline-block'; setTimeout(function(){ copied.style.display='none'; },3500); });
 </script>
 </body>
 </html>
