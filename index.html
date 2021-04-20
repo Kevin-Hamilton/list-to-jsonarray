@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>List to JSON Array tool</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9QN46JPXSY"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-9QN46JPXSY');</script>
   <style>
     textarea {
       display: block;
@@ -46,8 +48,8 @@ var txt = document.getElementById('txt-in');
 var json = document.getElementById('json-out');
 var clip = document.getElementById('to-clip');
 var copied = document.getElementById('copied');
-btn.addEventListener('click',function(){ var foo = txt.value; foo=foo.replace(/,$/gm,'').replace(/^\n/gm,'').trim(); var lines = foo.split('\n'); var str=JSON.stringify(lines); json.value=str.replace(/(.{40}.*?),/g,'$1,\n'); clip.style.display='inline-block'; });
-clip.addEventListener('click',function(){ json.focus(); json.select(); document.execCommand("copy"); clip.style.display='none'; copied.style.display='inline-block'; setTimeout(function(){ copied.style.display='none'; },3500); });
+btn.addEventListener('click',function(){ var foo = txt.value; foo=foo.replace(/,$/gm,'').replace(/^\n/gm,'').trim(); var lines = foo.split('\n'); var str=JSON.stringify(lines); json.value=str.replace(/(.{40}.*?),/g,'$1,\n'); clip.style.display='inline-block'; gtag('event','unlock_achievement',{achievement_id:'convert'}); });
+clip.addEventListener('click',function(){ json.focus(); json.select(); document.execCommand("copy"); clip.style.display='none'; copied.style.display='inline-block'; setTimeout(function(){ copied.style.display='none'; },3500); gtag('event','unlock_achievement',{achievement_id:'clipboard'}); });
 </script>
 </body>
 </html>
